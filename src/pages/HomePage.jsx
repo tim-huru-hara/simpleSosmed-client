@@ -5,7 +5,7 @@ import showToast from "../utils/toast"
 import PostsList from "../components/PostList";
 
 export default function HomePage() {
-    const { isAuthenticated, userInfo } = useAuth();
+    const { isAuthenticated, userInfo, emitEvent } = useAuth();
     const [description, setDescription] = useState('');
     const [refreshPosts, setRefreshPosts] = useState(false);
 
@@ -19,6 +19,7 @@ export default function HomePage() {
             })
             showToast({ message: 'Posted', type: 'success' })
             setDescription('');
+            emitEvent('new_post', { description });
             setRefreshPosts(prev => !prev);
         } catch (error) {
             console.log(error)
@@ -47,7 +48,7 @@ export default function HomePage() {
                     </div>
                 </div>
             }
-            <PostsList refreshPosts={refreshPosts} />
+            <PostsList refreshPosts={refreshPosts} setRefreshPosts={setRefreshPosts} />
         </>
     )
 }
