@@ -1,4 +1,4 @@
-import showToast from "../utils/toast"
+// import showToast from "../utils/toast"
 
 const posts = [
     {
@@ -112,8 +112,8 @@ const currentUser = {
     userName: 'rofiq',
     imageUrl: 'https://pbs.twimg.com/profile_images/1057274167253336065/hHVlpCM4_400x400.jpg',
 }
-export default () => {
-    const notify = () => showToast({ message: "Hello" })
+export default function HomePage() {
+
 
     return (
         <>
