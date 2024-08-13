@@ -28,7 +28,7 @@ export default function LoginPage() {
 
     return (
         <div className="bg-[#0E1217] w-screen h-screen p-5 flex flex-col justify-between">
-            <p className="text-white text-xl">Dev Place</p>
+            <p className="text-white text-xl">Simple Sosmed</p>
             <form onSubmit={handleSubmit} className="grid w-full justify-center gap-4">
                 <h1 className="text-white text-center text-2xl w-[400px] font-bold">Log in</h1>
 
