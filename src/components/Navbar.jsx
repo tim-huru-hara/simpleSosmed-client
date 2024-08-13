@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom"
 import { useAuth } from "../context/authProvider"
+import showToast from "../utils/toast"
 
 export default () => {
     const { isAuthenticated, logout } = useAuth();
