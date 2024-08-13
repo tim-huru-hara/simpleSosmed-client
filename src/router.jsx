@@ -1,8 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import MainLayout from "./layouts/MainLayout";
+import RegisterPage from "./pages/RegisterPage";
+import LoginPage from "./pages/LoginPage";
 
-export default createBrowserRouter([
+const router = createBrowserRouter([
     {
         element: <MainLayout />,
         children: [
@@ -11,5 +13,15 @@ export default createBrowserRouter([
                 element: <HomePage />
             }
         ]
-    }
+    },
+    {
+        path: "/register",
+        element: <RegisterPage />
+    },
+    {
+        path: "/login",
+        element: <LoginPage />
+    },
 ])
+
+export default router;
