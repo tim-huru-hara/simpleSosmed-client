@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react"
 import request from "../utils/axios"
+import { useAuth } from "../context/authProvider"
 
-export default function PostsList({ refreshPosts }) {
+export default function PostsList({ refreshPosts, setRefreshPosts }) {
     const [data, setData] = useState([])
+    const { socket, onEvent, offEvent } = useAuth()
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -17,7 +20,14 @@ export default function PostsList({ refreshPosts }) {
             }
         }
         fetchData()
-    }, [refreshPosts])
+        console.log(socket)
+        if (socket) {
+            onEvent('update_posts', (payload) => {
+                console.log(payload)
+                fetchData()
+            });
+        }
+    }, [refreshPosts, onEvent])
 
     if (data) return (
         <>

@@ -6,9 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import AuthProvider from './context/authProvider.jsx';
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <AuthProvider>
-      <App />
-    </AuthProvider>
-  </StrictMode>,
+  <AuthProvider>
+    <App />
+  </AuthProvider>
 )
