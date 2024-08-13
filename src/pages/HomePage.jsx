@@ -1,3 +1,4 @@
+import { useAuth } from "../context/authProvider"
 // import showToast from "../utils/toast"
 
 const posts = [
@@ -112,33 +113,35 @@ const currentUser = {
     userName: 'rofiq',
     imageUrl: 'https://pbs.twimg.com/profile_images/1057274167253336065/hHVlpCM4_400x400.jpg',
 }
-export default function HomePage() {
 
+export default function HomePage() {
+    const { isAuthenticated } = useAuth();
 
     return (
         <>
             {/* post */}
-            <div className="flex p-3 border border-gray-700">
-                <div className="w-[12%]">
-                    <img className="rounded-xl w-[50px]" src={currentUser.imageUrl} alt="" />
-                </div>
-                <div className="w-[88%] flex flex-col gap-5">
-                    <form action="">
-                        <input
-                            className="bg-black text-white outline-none mt-3 w-full"
-                            type="text"
-                            placeholder="What is happening?!"
-                        />
-                    </form>
-                    <p className="text-white font-bold text-right hover:cursor-pointer">Post</p>
-                </div>
+            {isAuthenticated &&
+                <div className="flex p-3 border border-gray-700">
+                    <div className="w-[12%]">
+                        <img className="rounded-xl w-[50px]" src={currentUser.imageUrl} alt="" />
+                    </div>
+                    <div className="w-[88%] flex flex-col gap-5">
+                        <form action="">
+                            <input
+                                className="bg-black text-white outline-none mt-3 w-full"
+                                type="text"
+                                placeholder="What is happening?!"
+                            />
+                        </form>
+                        <p className="text-white font-bold text-right hover:cursor-pointer">Post</p>
+                    </div>
 
 
-            </div>
-            {posts.map(e => {
+                </div>
+            }
+            {posts.map((e, i) => {
                 return (
-                    <>
-                        <div className="flex p-3 border border-gray-700">
+                        <div key={i} className="flex p-3 border border-gray-700">
                             <div className="w-[12%]">
                                 <img className="rounded-xl w-[50px]" src={e.imageUrl} alt="" />
                             </div>
@@ -203,7 +206,6 @@ export default function HomePage() {
 
 
                         </div>
-                    </>
                 )
             })}
         </>

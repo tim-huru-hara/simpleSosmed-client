@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react"
 import request from "../utils/axios"
 import showToast from "../utils/toast"
+import Footer from "../components/Footer"
 
 export default function RegisterPage() {
     const [username, setUsername] = useState("")
@@ -54,16 +55,7 @@ export default function RegisterPage() {
                 <div className="border-t border-[#2D323C] flex-grow"></div>
                 <p className="text-[#A8B3CF] text-center">Not a member yet? <Link to='/login' className="text-white underline hover:cursor-pointer">Log in</Link></p>
             </form>
-            <div className="flex justify-center gap-3 font-light text-xs">
-
-                <p className="text-[#A8B3CF] text-center">@ 2024 Dev Place Ltd.</p>
-                <p className="text-[#A8B3CF] text-center">Guidelines</p>
-                <p className="text-[#A8B3CF] text-center">Explore</p>
-                <p className="text-[#A8B3CF] text-center">Tags</p>
-                <p className="text-[#A8B3CF] text-center">Sources</p>
-                <p className="text-[#A8B3CF] text-center">Squads</p>
-                <p className="text-[#A8B3CF] text-center">Leaderboard</p>
-            </div>
+            <Footer />
         </div>
     )
 }
