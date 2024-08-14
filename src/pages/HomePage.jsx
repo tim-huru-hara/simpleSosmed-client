@@ -30,12 +30,12 @@ export default function HomePage() {
         <>
             {/* post */}
             {isAuthenticated &&
-                <div className="flex p-3 border border-gray-700">
+                <div className="flex p-3 border border-gray-700 h-[120px]">
                     <div className="w-[12%]">
                         <img className="rounded-xl w-[50px] h-[50px]" src={userInfo.imageUrl} alt="" />
                     </div>
                     <div className="w-[88%] flex flex-col gap-5">
-                        <form onSubmit={handleSubmit}>
+                        <form onSubmit={handleSubmit} className="flex flex-col h-full justify-between">
                             <input
                                 className="bg-black text-white outline-none mt-3 w-full"
                                 type="text"
@@ -43,7 +43,9 @@ export default function HomePage() {
                                 value={description}
                                 onChange={(e) => setDescription(e.target.value)}
                             />
-                            <button type="submit" className="text-white font-bold text-right hover:cursor-pointer">Post</button>
+                            <div className="flex justify-end">
+                                <button type="submit" className="text-white font-bold text-right hover:cursor-pointer bg-[#1D9BF0] hover:bg-[#267bb4] px-4 rounded-xl">Post</button>
+                            </div>
                         </form>
                     </div>
                 </div>

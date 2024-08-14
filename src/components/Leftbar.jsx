@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+
 export default () => {
     const people = [
         {
@@ -43,8 +44,8 @@ export default () => {
     return (
         <div className="p-3 flex flex-col gap-3">
             {/* Search  */}
-            <div className='flex justify-start w-1/2'>
-                <form className="w-[300px]" onSubmit={handleSearch}>
+            <div className='flex justify-start w-2/3'>
+                <form className="w-full" onSubmit={handleSearch}>
                     <div className="relative">
                         <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                             <svg className="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
@@ -64,7 +65,7 @@ export default () => {
                 </form>
             </div>
 
-            <div className="border border-gray-700 w-1/2 rounded-xl py-2 px-4">
+            <div className="border border-gray-700 w-2/3 rounded-xl py-2 px-4">
                 <p className="text-white font-bold text-2xl">Who to follow</p>
                 {people.map((e, i) => {
                     return (
