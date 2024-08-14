@@ -8,7 +8,7 @@ export default function HomePage() {
     const { isAuthenticated, userInfo, emitEvent } = useAuth();
     const [description, setDescription] = useState('');
     const [refreshPosts, setRefreshPosts] = useState(false);
-
+    console.log(userInfo)
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
