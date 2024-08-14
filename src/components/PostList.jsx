@@ -30,40 +30,14 @@ export default function PostsList({ refreshPosts, setRefreshPosts }) {
     }
   }, [refreshPosts, onEvent]);
 
-  useEffect(() => {
-    const fetchLikes = async () => {
-      try {
-        const { data: response } = await request.get("/getlikes", {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        });
-        setLikes(response);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchLikes();
-
-    if (socket) {
-      onEvent("update_like", (payload) => {
-        console.log(payload);
-        fetchLikes();
-      });
-    }
-
-    return () => {
-      if (socket) {
-        offEvent("update_like");
-      }
-    };
-  }, [refreshPosts, onEvent]);
-
-  const handleSubmit = async (e) => {
+  const handleLike = async (e) => {
     e.preventDefault();
+
+    const { id } = data.id;
+
     try {
       request.post(
-        "/likes",
+        `/likes/${id}`,
         { username: userInfo.username },
         {
           headers: {
@@ -97,7 +71,10 @@ export default function PostsList({ refreshPosts, setRefreshPosts }) {
                 <p className="text-white font-bold">{e.User.username}</p>
                 <p className="text-white text-sm opacity-85">{e.description}</p>
                 <div className="flex justify-start gap-5 mt-1">
-                  <div className="flex items-center content-center gap-1 opacity-50 hover:opacity-100 hover:cursor-pointer">
+                  <div
+                    className="flex items-center content-center gap-1 opacity-50 hover:opacity-100 hover:cursor-pointer"
+                    onClick={handleLike}
+                  >
                     <div className="flex">
                       <svg
                         fill="#ffffff"
