@@ -6,8 +6,8 @@ import { useAuth } from "../context/authProvider"
 import Footer from "../components/Footer"
 
 export default function LoginPage() {
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
+    const [email, setEmail] = useState("visitor@mail.com")
+    const [password, setPassword] = useState("visitor1234")
     const { login } = useAuth();
     const navigate = useNavigate()
 
@@ -20,7 +20,9 @@ export default function LoginPage() {
             })
             login(response.data.access_token)
             showToast({ message: 'success Log in', type: 'success' })
-            navigate("/")
+            setTimeout(() => {
+                navigate("/")
+            }, 500)
         } catch (err) {
             showToast({ message: 'failed Log in' })
         }
