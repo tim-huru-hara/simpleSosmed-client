@@ -14,7 +14,9 @@ export default () => {
     return (
         <>
             <div className="text-white text-end flex flex-col gap-4 p-10">
-                <p>Home</p>
+                <Link to='/' className='hover:cursor-pointer'>
+                    <p>Home</p>
+                </Link>
                 <p>Explore</p>
                 <p>Treinding</p>
                 {isAuthenticated ? (
@@ -22,7 +24,9 @@ export default () => {
                         <Link to='/message' className='hover:cursor-pointer'>
                             <p>Message</p>
                         </Link>
-                        <p>Profile</p>
+                        <Link to='/profile/edit' className='hover:cursor-pointer'>
+                            <p>Profile</p>
+                        </Link>
                         <p>Post</p>
                         <p className="text-orange-600 opacity-70 hover:cursor-pointer" onClick={handleLogout} >Log Out</p>
                     </>
