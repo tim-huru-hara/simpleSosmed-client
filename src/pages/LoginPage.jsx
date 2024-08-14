@@ -2,23 +2,27 @@ import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react"
 import request from "../utils/axios"
 import showToast from "../utils/toast"
+import { useAuth } from "../context/authProvider"
+import Footer from "../components/Footer"
 
 export default function LoginPage() {
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
+    const [email, setEmail] = useState("visitor@mail.com")
+    const [password, setPassword] = useState("visitor1234")
+    const { login } = useAuth();
     const navigate = useNavigate()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-
         try {
             const response = await request.post("/login", {
                 email: email,
                 password: password
             })
-           localStorage.setItem("access_token", response.data.access_token);
-           showToast({ message: 'success Log in', type: 'success' })
-           navigate("/")
+            login(response.data.access_token)
+            showToast({ message: 'success Log in', type: 'success' })
+            setTimeout(() => {
+                navigate("/")
+            }, 500)
         } catch (err) {
             showToast({ message: 'failed Log in' })
         }
@@ -26,7 +30,7 @@ export default function LoginPage() {
 
     return (
         <div className="bg-[#0E1217] w-screen h-screen p-5 flex flex-col justify-between">
-            <p className="text-white text-xl">Dev Place</p>
+            <p className="text-white text-xl">Simple Sosmed</p>
             <form onSubmit={handleSubmit} className="grid w-full justify-center gap-4">
                 <h1 className="text-white text-center text-2xl w-[400px] font-bold">Log in</h1>
 
@@ -38,9 +42,9 @@ export default function LoginPage() {
 
                 <div className="grid gap-4 text-xl">
                     <input id="email" name='email' className="bg-[#20252D] rounded-md px-5 py-2 text-white text-sm" type="text" placeholder="Email" value={email}
-                            onChange={(e) => setEmail(e.target.value)} />
+                        onChange={(e) => setEmail(e.target.value)} />
                     <input id="password" name='password' className="bg-[#20252D] rounded-md px-5 py-2 text-white text-sm" type="password" placeholder="Password" value={password}
-                            onChange={(e) => setPassword(e.target.value)} />
+                        onChange={(e) => setPassword(e.target.value)} />
                 </div>
                 <div className="flex justify-between items-center my-3">
                     <p className="text-[#A8B3CF] font-normal underline">Forgot password?</p>
@@ -50,16 +54,7 @@ export default function LoginPage() {
                 <div className="border-t border-[#2D323C] flex-grow"></div>
                 <p className="text-[#A8B3CF] text-center">Not a member yet? <Link to='/register' className="text-white underline hover:cursor-pointer">Sign up</Link></p>
             </form>
-            <div className="flex justify-center gap-3 font-light text-xs">
-
-                <p className="text-[#A8B3CF] text-center">@ 2024 Dev Place Ltd.</p>
-                <p className="text-[#A8B3CF] text-center">Guidelines</p>
-                <p className="text-[#A8B3CF] text-center">Explore</p>
-                <p className="text-[#A8B3CF] text-center">Tags</p>
-                <p className="text-[#A8B3CF] text-center">Sources</p>
-                <p className="text-[#A8B3CF] text-center">Squads</p>
-                <p className="text-[#A8B3CF] text-center">Leaderboard</p>
-            </div>
+            <Footer />
         </div>
     )
 }

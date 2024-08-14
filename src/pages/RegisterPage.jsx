@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react"
 import request from "../utils/axios"
 import showToast from "../utils/toast"
+import Footer from "../components/Footer"
 
 export default function RegisterPage() {
     const [username, setUsername] = useState("")
@@ -27,7 +28,7 @@ export default function RegisterPage() {
 
     return (
         <div className="bg-[#0E1217] w-screen h-screen p-5 flex flex-col justify-between">
-            <p className="text-white text-xl">Dev Place</p>
+            <p className="text-white text-xl">Simple Sosmed</p>
             <form onSubmit={handleSubmit} className="grid w-full justify-center gap-4">
                 <h1 className="text-white text-center text-2xl w-[400px] font-bold">Sign Up</h1>
 
@@ -54,16 +55,7 @@ export default function RegisterPage() {
                 <div className="border-t border-[#2D323C] flex-grow"></div>
                 <p className="text-[#A8B3CF] text-center">Not a member yet? <Link to='/login' className="text-white underline hover:cursor-pointer">Log in</Link></p>
             </form>
-            <div className="flex justify-center gap-3 font-light text-xs">
-
-                <p className="text-[#A8B3CF] text-center">@ 2024 Dev Place Ltd.</p>
-                <p className="text-[#A8B3CF] text-center">Guidelines</p>
-                <p className="text-[#A8B3CF] text-center">Explore</p>
-                <p className="text-[#A8B3CF] text-center">Tags</p>
-                <p className="text-[#A8B3CF] text-center">Sources</p>
-                <p className="text-[#A8B3CF] text-center">Squads</p>
-                <p className="text-[#A8B3CF] text-center">Leaderboard</p>
-            </div>
+            <Footer />
         </div>
     )
 }
