@@ -54,6 +54,32 @@ export default function PostsList({ refreshPosts, setRefreshPosts }) {
     }
   };
 
+  const handleComment = async (e) => {
+    e.preventDefault();
+
+    // nanti kalo ada yang post comment ini yang di pake ya Rofiq
+
+    const { id } = data.id; // ambil id dari postnya jangan lupa
+
+    try {
+      request.post(
+        `/comments/${id}`,
+        { username: userInfo.username , comment: (diisiinputcommentnya)},
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      showToast({ message: "Comment", type: "success" });
+      setDescription("");
+      emitEvent("new_comment", { username , comment });
+      setRefreshPosts((prev) => !prev);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   if (data)
     return (
       <>
