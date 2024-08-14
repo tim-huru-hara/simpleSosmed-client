@@ -18,7 +18,7 @@ export default () => {
                     <p>Home</p>
                 </Link>
                 <p>Explore</p>
-                <p>Treinding</p>
+                <p>Trending</p>
                 {isAuthenticated ? (
                     <>
                         <Link to='/message' className='hover:cursor-pointer'>

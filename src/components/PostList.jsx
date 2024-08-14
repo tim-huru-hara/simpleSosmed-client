@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import request from "../utils/axios";
 import { useAuth } from "../context/authProvider";
 import showToast from "../utils/toast";
+import CommentComponent from './CommentComponent'
+import { formatRelativeTime } from "../utils/relativeTime";
 
 export default function PostsList({ refreshPosts, setRefreshPosts }) {
     const [data, setData] = useState([]);
-    const [like, setLikes] = useState([]);
     const { userInfo, socket, onEvent, offEvent, emitEvent } = useAuth();
 
     useEffect(() => {
@@ -38,7 +39,6 @@ export default function PostsList({ refreshPosts, setRefreshPosts }) {
     const handleLike = async (e) => {
 
         const id = e;
-        console.log(userInfo)
         try {
             await request.post(
                 `/likes/${id}`,
@@ -58,10 +58,13 @@ export default function PostsList({ refreshPosts, setRefreshPosts }) {
         }
     };
 
+
+    console.log(data)
     if (data)
         return (
             <>
                 {data.map((e, i) => {
+
                     return (
                         <div key={i} className="flex p-3 border border-gray-700">
                             <div className="w-[12%]">
@@ -72,7 +75,10 @@ export default function PostsList({ refreshPosts, setRefreshPosts }) {
                                 />
                             </div>
                             <div className="w-[88%]">
+                                <div className="flex justify-between">
                                 <p className="text-white font-bold">{e.User.username}</p>
+                                <p className="text-white font-bold text-opacity-70">{formatRelativeTime(e.createdAt)}</p>
+                                </div>
                                 <p className="text-white text-sm opacity-85">{e.description}</p>
                                 <div className="flex justify-start gap-5 mt-1">
                                     <div
@@ -140,10 +146,13 @@ export default function PostsList({ refreshPosts, setRefreshPosts }) {
                                             </svg>
                                         </div>
                                         <p className="text-white">
-                                            {e.comment ? e.comment.length : 0}
+                                            {e.comments ? e.comments.length : 0}
                                         </p>
                                     </div>
                                 </div>
+
+                                {/* post comment section */}
+                                <CommentComponent e={e} setRefreshPosts={setRefreshPosts} />
                             </div>
                         </div>
                     );
