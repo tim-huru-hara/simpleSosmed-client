@@ -212,33 +212,60 @@ export default () => {
                         </div>
                     </>
                 ) : (
-                    <Link
-                        to='/login'
-                        className='hover:cursor-pointer flex justify-start gap-2'>
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="25px" width="25px">
-                            <g id="SVGRepo_bgCarrier" strokeWidth={0} />
-                            <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" />
-                            <g id="SVGRepo_iconCarrier">
-                                {" "}
-                                <path
-                                    d="M2.00098 11.999L16.001 11.999M16.001 11.999L12.501 8.99902M16.001 11.999L12.501 14.999"
-                                    stroke="#ffffff"
-                                    strokeWidth="1.5"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                />{" "}
-                                <path
-                                    opacity="0.5"
-                                    d="M9.00195 7C9.01406 4.82497 9.11051 3.64706 9.87889 2.87868C10.7576 2 12.1718 2 15.0002 2L16.0002 2C18.8286 2 20.2429 2 21.1215 2.87868C22.0002 3.75736 22.0002 5.17157 22.0002 8L22.0002 16C22.0002 18.8284 22.0002 20.2426 21.1215 21.1213C20.2429 22 18.8286 22 16.0002 22H15.0002C12.1718 22 10.7576 22 9.87889 21.1213C9.11051 20.3529 9.01406 19.175 9.00195 17"
-                                    stroke="#ffffff"
-                                    strokeWidth="1.5"
-                                    strokeLinecap="round"
-                                />{" "}
-                            </g>
-                        </svg>
+                        <>
+                            <Link
+                                to='/register'
+                                className='hover:cursor-pointer flex justify-start gap-2'>
+                                <svg
+                                    fill="#ffffff"
+                                    height="25px"
+                                    width="25px"
+                                    version="1.1"
+                                    id="Capa_1"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    xmlnsXlink="http://www.w3.org/1999/xlink"
+                                    viewBox="0 0 310 310"
+                                    xmlSpace="preserve"
+                                >
+                                    <g id="SVGRepo_bgCarrier" strokeWidth={0} />
+                                    <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" />
+                                    <g id="SVGRepo_iconCarrier">
+                                        {" "}
+                                        <path d="M300.606,159.727l-45.333-45.333c-5.857-5.858-15.355-5.858-21.213,0L225,123.454V15c0-8.284-6.716-15-15-15H20 C11.716,0,5,6.716,5,15v240.002c0,8.284,6.716,15,15,15h85V295c0,8.284,6.716,15,15,15h45.333c3.979,0,7.794-1.581,10.607-4.394 l124.667-124.667C306.465,175.081,306.465,165.585,300.606,159.727z M35,30h160v123.454l-85.606,85.605 c-0.302,0.301-0.581,0.619-0.854,0.942H35V30z M159.12,280H135v-24.121l109.667-109.666l24.12,24.12L159.12,280z" />{" "}
+                                    </g>
+                                </svg>
 
-                        <p className="hover:cursor-pointer">Login</p>
-                    </Link>
+
+                                <p className="hover:cursor-pointer">Register</p>
+                            </Link>
+                        <Link
+                            to='/login'
+                            className='hover:cursor-pointer flex justify-start gap-2'>
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="25px" width="25px">
+                                <g id="SVGRepo_bgCarrier" strokeWidth={0} />
+                                <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" />
+                                <g id="SVGRepo_iconCarrier">
+                                    {" "}
+                                    <path
+                                        d="M2.00098 11.999L16.001 11.999M16.001 11.999L12.501 8.99902M16.001 11.999L12.501 14.999"
+                                        stroke="#ffffff"
+                                        strokeWidth="1.5"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                    />{" "}
+                                    <path
+                                        opacity="0.5"
+                                        d="M9.00195 7C9.01406 4.82497 9.11051 3.64706 9.87889 2.87868C10.7576 2 12.1718 2 15.0002 2L16.0002 2C18.8286 2 20.2429 2 21.1215 2.87868C22.0002 3.75736 22.0002 5.17157 22.0002 8L22.0002 16C22.0002 18.8284 22.0002 20.2426 21.1215 21.1213C20.2429 22 18.8286 22 16.0002 22H15.0002C12.1718 22 10.7576 22 9.87889 21.1213C9.11051 20.3529 9.01406 19.175 9.00195 17"
+                                        stroke="#ffffff"
+                                        strokeWidth="1.5"
+                                        strokeLinecap="round"
+                                    />{" "}
+                                </g>
+                            </svg>
+
+                            <p className="hover:cursor-pointer">Login</p>
+                        </Link>
+                    </>
                 )}
             </div>
         </>
