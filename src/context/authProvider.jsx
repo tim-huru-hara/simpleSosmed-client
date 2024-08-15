@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
-      const socketInstance = io('http://localhost:3000');
+      const socketInstance = io('https://simple-sosmed-server.ainurrofiq.site');
       setSocket(socketInstance)
       setIsAuthenticated(true);
       const fetchUserInfo = async () => {
